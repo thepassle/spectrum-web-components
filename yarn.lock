@@ -3615,6 +3615,11 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/tooltip/-/tooltip-3.0.0-beta.4.tgz#4886c901d106c2654b02dc59b12f80d37949b778"
   integrity sha512-yhcXpDNoNz4xg5Nl4GRQU8/1dgZfacfzzC7xFkP+6qtMoW7jF9qhe2FDC8G4OO/f/h7RXftXp8R13MNYRv1DMw==
 
+"@spectrum-css/treeview@^3.0.0-beta.5":
+  version "3.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/treeview/-/treeview-3.0.0-beta.5.tgz#9c1ec9a7f9392558aaa1aa45eb9a1659262303e1"
+  integrity sha512-BYF+MjOzOB5KvVgaPEgMDq1BLNI2zfERk442OlZPdyYnaoVerYfC3zisr+WKIhByu3Rbeqj2mQo/s6cK6BUDsg==
+
 "@spectrum-css/typography@^3.0.0-beta.0":
   version "3.0.0-beta.0"
   resolved "https://registry.yarnpkg.com/@spectrum-css/typography/-/typography-3.0.0-beta.0.tgz#62dc8ee5026944afe157151dd8986fe8ff191df1"
