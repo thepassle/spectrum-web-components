@@ -35,3 +35,40 @@ governing permissions and limitations under the License.
 :host([data-popper-placement*='bottom']) #tip {
     margin-left: 0;
 }
+
+:host([placement*='left']) #tip,
+:host([placement*='right']) #tip {
+    /* .spectrum-Tooltip-tip */
+    border-left-color: var(
+        --spectrum-tooltip-background-color,
+        var(--spectrum-global-color-static-gray-700)
+    );
+    border-left-width: var(
+        --spectrum-tooltip-tip-height,
+        var(--spectrum-global-dimension-size-50)
+    );
+    border-left-style: solid;
+    border-top: var(
+            --spectrum-tooltip-tip-height,
+            var(--spectrum-global-dimension-size-50)
+        )
+        solid transparent;
+    border-bottom: var(
+            --spectrum-tooltip-tip-height,
+            var(--spectrum-global-dimension-size-50)
+        )
+        solid transparent;
+    border-right: var(
+            --spectrum-tooltip-tip-height,
+            var(--spectrum-global-dimension-size-50)
+        )
+        solid transparent;
+}
+
+:host([placement*='left']) #tip {
+    transform: none;
+}
+
+:host([placement*='right']) #tip {
+    transform: scaleX(-1);
+}
