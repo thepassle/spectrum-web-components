@@ -10,8 +10,7 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 import '../sp-circle-loader.js';
-import { html } from '@open-wc/demoing-storybook';
-import { TemplateResult } from '@spectrum-web-components/base';
+import { html, TemplateResult } from '@spectrum-web-components/base';
 
 export default {
     component: 'sp-circle-loader',

@@ -8,10 +8,8 @@ the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTA
 OF ANY KIND, either express or implied. See the License for the specific language
 governing permissions and limitations under the License.
 */
-import { html, number, select, radios } from '@open-wc/demoing-storybook';
-import { TemplateResult } from '@spectrum-web-components/base';
+import { html, TemplateResult } from '@spectrum-web-components/base';
 
-import { Placement } from '../';
 import '@spectrum-web-components/button/sp-button.js';
 import '@spectrum-web-components/dialog/sp-dialog-wrapper.js';
 import { DialogWrapper } from '@spectrum-web-components/dialog';
@@ -26,6 +24,7 @@ import '@spectrum-web-components/theme/src/themes.js';
 import { Color, Scale } from '@spectrum-web-components/theme';
 
 import './overlay-story-components';
+import { Placement } from '../src/overlay-types.js';
 
 declare global {
     interface Window {
@@ -76,34 +75,52 @@ const storyStyles = html`
 
 export default {
     title: 'Overlay',
+    argTypes: {
+        offset: { control: 'number' },
+        placement: {
+            control: {
+                type: 'inline-radio',
+                options: [
+                    'top',
+                    'top-start',
+                    'top-end',
+                    'bottom',
+                    'bottom-start',
+                    'bottom-end',
+                    'left',
+                    'left-start',
+                    'left-end',
+                    'right',
+                    'right-start',
+                    'right-end',
+                    'auto',
+                    'auto-start',
+                    'auto-end',
+                    'none',
+                ],
+            },
+        },
+        colorStop: {
+            control: {
+                type: 'inline-radio',
+                options: ['light', 'dark'],
+            },
+        },
+    },
+    args: {
+        placement: 'bottom',
+        offset: 0,
+        colorStop: 'light',
+    },
 };
 
-export const Default = (): TemplateResult => {
-    const placement = select(
-        'Placement',
-        [
-            'top',
-            'top-start',
-            'top-end',
-            'bottom',
-            'bottom-start',
-            'bottom-end',
-            'left',
-            'left-start',
-            'left-end',
-            'right',
-            'right-start',
-            'right-end',
-            'auto',
-            'auto-start',
-            'auto-end',
-            'none',
-        ],
-        'bottom'
-    ) as Placement;
-
-    const offset = number('Offset', 0);
-
+export const Default = ({
+    placement,
+    offset,
+}: {
+    placement: Placement;
+    offset: number;
+}): TemplateResult => {
     return html`
         ${storyStyles}
         <overlay-trigger
@@ -111,9 +128,7 @@ export const Default = (): TemplateResult => {
             placement="${placement}"
             offset="${offset}"
         >
-            <sp-button variant="primary" slot="trigger">
-                Show Popover
-            </sp-button>
+            <sp-button variant="primary" slot="trigger">Show Popover</sp-button>
             <sp-popover
                 dialog
                 slot="click-content"
@@ -179,12 +194,8 @@ export const inline = (): TemplateResult => {
                 </sp-button>
             </sp-overlay>
         </overlay-trigger>
-        <p>
-            This is some text.
-        </p>
-        <p>
-            This is some text.
-        </p>
+        <p>This is some text.</p>
+        <p>This is some text.</p>
         <p>
             This is a
             <a href="#anchor">link</a>
@@ -208,12 +219,8 @@ export const replace = (): TemplateResult => {
                 </sp-button>
             </sp-overlay>
         </overlay-trigger>
-        <p>
-            This is some text.
-        </p>
-        <p>
-            This is some text.
-        </p>
+        <p>This is some text.</p>
+        <p>This is some text.</p>
         <p>
             This is a
             <a href="#anchor">link</a>
@@ -258,12 +265,8 @@ export const modal = (): TemplateResult => {
                 Content of the dialog
             </sp-dialog-wrapper>
         </overlay-trigger>
-        <p>
-            This is some text.
-        </p>
-        <p>
-            This is some text.
-        </p>
+        <p>This is some text.</p>
+        <p>This is some text.</p>
         <p>
             This is a
             <a href="#anchor">link</a>
@@ -272,16 +275,11 @@ export const modal = (): TemplateResult => {
     `;
 };
 
-export const deepNesting = (): TemplateResult => {
-    const colorOptions = {
-        Light: 'light',
-        Dark: 'dark',
-    };
-    const color = radios(
-        'Color stop',
-        colorOptions,
-        colorOptions.Light
-    ) as Color;
+export const deepNesting = ({
+    colorStop: color,
+}: {
+    colorStop: Color;
+}): TemplateResult => {
     const outter = color === 'light' ? 'dark' : 'light';
     return html`
         ${storyStyles}
