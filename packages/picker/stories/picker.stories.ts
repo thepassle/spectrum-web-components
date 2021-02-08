@@ -17,6 +17,7 @@ import '../sp-picker.js';
 import { Picker } from '../';
 import '@spectrum-web-components/menu/sp-menu.js';
 import '@spectrum-web-components/menu/sp-menu-item.js';
+import '@spectrum-web-components/field-label/sp-field-label.js';
 
 export default {
     title: 'Picker',
@@ -25,7 +26,11 @@ export default {
 
 export const Default = (): TemplateResult => {
     return html`
+        <sp-field-label for="picker-1">
+            Select a Country with a very long label, too long, in fact
+        </sp-field-label>
         <sp-picker
+            id="picker-1"
             @change="${(event: Event): void => {
                 const picker = event.target as Picker;
                 action(`Change: ${picker.value}`)();

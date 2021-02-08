@@ -106,6 +106,9 @@ export class PickerBase extends Focusable {
     @query('sp-popover')
     private popover?: HTMLElement;
 
+    @query('#label-text')
+    private labelText!: HTMLSpanElement;
+
     protected listRole = 'listbox';
     protected itemRole = 'option';
     private placeholder?: Comment;
@@ -290,6 +293,7 @@ export class PickerBase extends Focusable {
     protected get buttonContent(): TemplateResult[] {
         return [
             html`
+                <span id="label-text" class="visually-hidden"></span>
                 <span
                     id="label"
                     class=${ifDefined(this.value ? undefined : 'placeholder')}
@@ -316,9 +320,8 @@ export class PickerBase extends Focusable {
         return html`
             <button
                 aria-haspopup="true"
-                aria-controls="popover"
                 aria-expanded=${this.open ? 'true' : 'false'}
-                aria-label=${ifDefined(this.label || undefined)}
+                aria-labelledby="label-text label"
                 id="button"
                 class="button"
                 @blur=${this.onButtonBlur}
@@ -345,6 +348,29 @@ export class PickerBase extends Focusable {
 
     protected firstUpdated(changedProperties: PropertyValues): void {
         super.firstUpdated(changedProperties);
+
+        const labelMO = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+                if (mutation.type === 'attributes') {
+                    const label = (mutation.target as HTMLElement).getAttribute(
+                        'aria-label'
+                    );
+                    this.labelText.textContent = label;
+                }
+            }
+        });
+
+        labelMO.observe(this.button, {
+            attributes: true,
+            attributeFilter: ['aria-label'],
+        });
+
+        if (this.button.hasAttribute('arial-label')) {
+            debugger;
+            this.labelText.textContent = this.button.getAttribute(
+                'arial-label'
+            );
+        }
 
         this.optionsMenu = this.querySelector('sp-menu') as Menu;
     }
