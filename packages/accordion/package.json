@@ -46,7 +46,8 @@
         "./sp-*.ts"
     ],
     "scripts": {
-        "test": "karma start --coverage"
+        "test": "karma start --coverage",
+        "custom-elements-manifest": "cem analyze --glob src/**/*.{ts,js}"
     },
     "author": "",
     "license": "Apache-2.0",
@@ -59,5 +60,6 @@
         "@spectrum-web-components/icons-ui": "^0.5.2",
         "@spectrum-web-components/shared": "^0.9.0",
         "tslib": "^2.0.0"
-    }
+    },
+    "customElementsManifest": "custom-elements.json"
 }

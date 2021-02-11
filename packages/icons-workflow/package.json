@@ -42,7 +42,8 @@
         "./icons/*"
     ],
     "scripts": {
-        "build": "node ./bin/build @adobe/spectrum-css-workflow-icons/dist/18"
+        "build": "node ./bin/build @adobe/spectrum-css-workflow-icons/dist/18",
+        "custom-elements-manifest": "cem analyze --glob src/**/*.{ts,js}"
     },
     "author": "",
     "license": "Apache-2.0",
@@ -60,5 +61,6 @@
         "@spectrum-web-components/base": "^0.3.2",
         "@spectrum-web-components/icon": "^0.8.2",
         "tslib": "^2.0.0"
-    }
+    },
+    "customElementsManifest": "custom-elements.json"
 }

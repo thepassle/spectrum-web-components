@@ -39,7 +39,8 @@
     ],
     "sideEffects": false,
     "scripts": {
-        "test": "karma start --coverage"
+        "test": "karma start --coverage",
+        "custom-elements-manifest": "cem analyze --glob src/**/*.{ts,js}"
     },
     "author": "",
     "license": "Apache-2.0",
@@ -47,5 +48,6 @@
         "lit-element": "^2.4.0",
         "lit-html": "^1.0.0",
         "tslib": "^2.0.0"
-    }
+    },
+    "customElementsManifest": "custom-elements.json"
 }

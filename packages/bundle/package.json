@@ -44,7 +44,8 @@
         "./elements.ts"
     ],
     "scripts": {
-        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1"
+        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1",
+        "custom-elements-manifest": "cem analyze --glob src/**/*.{ts,js}"
     },
     "author": "",
     "license": "Apache-2.0",
@@ -97,5 +98,6 @@
         "@spectrum-web-components/tooltip": "^0.7.2",
         "@spectrum-web-components/underlay": "^0.5.0",
         "tslib": "^2.0.0"
-    }
+    },
+    "customElementsManifest": "custom-elements.json"
 }

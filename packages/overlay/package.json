@@ -55,7 +55,8 @@
         "./stories/overlay-story-components.ts"
     ],
     "scripts": {
-        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1"
+        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1",
+        "custom-elements-manifest": "cem analyze --glob src/**/*.{ts,js}"
     },
     "author": "",
     "license": "Apache-2.0",
@@ -66,5 +67,6 @@
         "@spectrum-web-components/theme": "^0.7.3",
         "popper-max-size-modifier": "^0.2.0",
         "tslib": "^2.0.0"
-    }
+    },
+    "customElementsManifest": "custom-elements.json"
 }
